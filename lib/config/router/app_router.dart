@@ -6,16 +6,7 @@ final appRouter = GoRouter(initialLocation: '/splash', routes: [
   GoRoute(
     path: '/home',
     name: HomeScreen.name,
-    pageBuilder: (context, state) => CustomTransitionPage(
-      child: const HomeScreen(),
-      transitionDuration: const Duration(milliseconds: 500),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        return NewWidget(
-          animation: animation,
-          child: child,
-        );
-      },
-    ),
+    builder: (context, state) => const HomeScreen(),
   ),
   GoRoute(
     path: '/splash',
