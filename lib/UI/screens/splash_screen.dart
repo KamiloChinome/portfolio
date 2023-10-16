@@ -10,7 +10,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-            child: Stack(
+                child: Stack(
       children: [
         Image.asset(
           'assets/kchLogo1.png',
@@ -26,16 +26,16 @@ class SplashScreen extends StatelessWidget {
               return Image.asset(
                 'assets/kchLogo2.png',
                 height: 190,
-              ).animate(onComplete: (controller) {
-                // Future.delayed(const Duration(milliseconds: 1500), () => context.pushReplacementNamed('home'));
-              }).fade(duration: const Duration(milliseconds: 500));
+              ).animate().fade(duration: const Duration(milliseconds: 500));
             } else {
               return const SizedBox();
             }
           },
         )
       ],
-    )).animate().scaleXY(begin: 1, end: 0, delay: const Duration(seconds: 2), curve: Curves.easeInOutQuint));
+    ))
+            .animate(onComplete: (_) => context.pushReplacementNamed('home'))
+            .scaleXY(begin: 1, end: 0, delay: const Duration(seconds: 2), curve: Curves.easeInOutQuint));
   }
 
   Future<void> animateLogo() async {
