@@ -1,29 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:portfolio/UI/providers/language_provider.dart';
 import 'package:portfolio/UI/widgets/shared/shared_widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class DesktopHomeScreen extends StatelessWidget {
   const DesktopHomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
         body: Stack(
       children: [
         CustomScrollView(
-          slivers: [_SliverAppBar()],
+          slivers: [const _SliverAppBar(), SliverList.list(children: const [])],
         ),
-        _SocialMediaSection(),
+        const _SocialMediaSection(),
         Positioned(
             bottom: 15,
             right: 40,
             child: Column(
               children: [
-                SharedTextIconButton(text: 'ES'),
-                SizedBox(height: 7),
-                SharedIconButton(icon: Icons.dark_mode_outlined),
+                SharedTextIconButton(
+                  text: (context.watch<LanguageProvider>().language == 'en') ? 'es' : 'en',
+                  onTab: () => context.read<LanguageProvider>().changeLanguage(),
+                ),
+                const SizedBox(height: 7),
+                const SharedIconButton(icon: Icons.dark_mode_outlined),
               ],
             ))
       ],

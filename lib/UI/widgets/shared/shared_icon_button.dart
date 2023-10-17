@@ -42,8 +42,10 @@ class SharedTextIconButton extends StatefulWidget {
   const SharedTextIconButton({
     super.key,
     required this.text,
+    this.onTab,
   });
   final String text;
+  final Function()? onTab;
 
   @override
   State<SharedTextIconButton> createState() => _SharedWidgetButton();
@@ -65,7 +67,7 @@ class _SharedWidgetButton extends State<SharedTextIconButton> {
           });
         },
         child: IconButton(
-          onPressed: () {},
+          onPressed: widget.onTab,
           icon: Text(
             widget.text,
             style: TextStyle(color: color, fontFamily: 'PixelifySans'),
