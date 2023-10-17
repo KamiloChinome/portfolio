@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/UI/screens/screens.dart';
 
-final appRouter = GoRouter(initialLocation: '/splash', routes: [
+final appRouter = GoRouter(initialLocation: '/home', routes: [
   GoRoute(
     path: '/home',
     name: HomeScreen.name,

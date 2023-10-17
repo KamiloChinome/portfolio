@@ -1,3 +1,8 @@
 {
-    "helloWorld": "Hola Mundo"
+    "helloWorld": "Hola Mundo",
+    "about": "Sobre mi",
+    "experience": "Experiencia",
+    "work": "Proyectos",
+    "contact": "Contacto",
+    "resume": "Currículum"
 }
