@@ -9,7 +9,7 @@ class AppTheme {
           const ColorScheme.dark(primary: darkPrimary, secondary: darkSecondary, onBackground: darkOnBackground),
       scaffoldBackgroundColor: darkBackground,
       appBarTheme: const AppBarTheme(
-        backgroundColor: transparent,
+        backgroundColor: darkBackground,
       ),
       textButtonTheme: const TextButtonThemeData(
           style: ButtonStyle(
@@ -33,9 +33,7 @@ class AppTheme {
       colorScheme:
           const ColorScheme.light(primary: lightPrimary, secondary: lightSecondary, onBackground: lightOnBackground),
       scaffoldBackgroundColor: lightBackground,
-      appBarTheme: const AppBarTheme(
-        backgroundColor: transparent,
-      ),
+      appBarTheme: const AppBarTheme(backgroundColor: lightBackground),
       textButtonTheme: const TextButtonThemeData(
           style: ButtonStyle(
               overlayColor: MaterialStatePropertyAll(lightOverlayColor),

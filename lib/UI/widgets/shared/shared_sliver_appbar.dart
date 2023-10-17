@@ -11,8 +11,6 @@ class SharedSliverAppBar extends StatelessWidget {
       toolbarHeight: 90,
       leadingWidth: 140,
       floating: true,
-      forceElevated: true,
-      elevation: 10,
       // shadowColor: Colors.black,
       leading: leading,
       actions: actions,
