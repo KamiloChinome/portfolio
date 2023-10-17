@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:portfolio/UI/providers/language_provider.dart';
+import 'package:portfolio/UI/providers/theme_provider.dart';
 import 'package:portfolio/UI/widgets/shared/shared_widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -25,10 +26,13 @@ class DesktopHomeScreen extends StatelessWidget {
               children: [
                 SharedTextIconButton(
                   text: (context.watch<LanguageProvider>().language == 'en') ? 'es' : 'en',
-                  onTab: () => context.read<LanguageProvider>().changeLanguage(),
+                  onTap: () => context.read<LanguageProvider>().changeLanguage(),
                 ),
                 const SizedBox(height: 7),
-                const SharedIconButton(icon: Icons.dark_mode_outlined),
+                SharedIconButton(
+                  icon: (context.watch<ThemeProvider>().isDarkMode) ? Icons.light_mode : Icons.dark_mode,
+                  onTap: () => context.read<ThemeProvider>().changeTheme(),
+                ),
               ],
             ))
       ],
@@ -77,13 +81,13 @@ class _SocialMediaSection extends StatelessWidget {
       left: 40,
       child: Column(
         children: [
-          const SharedIconButton(icon: IonIcons.logo_linkedin),
+          SharedIconButton(icon: IonIcons.logo_linkedin, onTap: () {}),
           const SizedBox(height: 7),
-          const SharedIconButton(icon: IonIcons.logo_github),
+          SharedIconButton(icon: IonIcons.logo_github, onTap: () {}),
           const SizedBox(height: 7),
-          const SharedIconButton(icon: IonIcons.logo_instagram),
+          SharedIconButton(icon: IonIcons.logo_instagram, onTap: () {}),
           const SizedBox(height: 7),
-          const SharedIconButton(icon: IonIcons.mail),
+          SharedIconButton(icon: IonIcons.mail, onTap: () {}),
         ].animate().slideY(),
       ),
     );

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/config/constants/colors.dart';
+
 class SharedTextButton extends StatefulWidget {
   const SharedTextButton({
-    super.key, required this.text,
+    super.key,
+    required this.text,
   });
   final String text;
 
@@ -11,18 +13,24 @@ class SharedTextButton extends StatefulWidget {
 }
 
 class _SharedTextButtonState extends State<SharedTextButton> {
-  late Color color = blanco;
+  late Color color;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    color = Theme.of(context).colorScheme.onBackground;
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      style: ButtonStyle(foregroundColor: MaterialStatePropertyAll(color)),
-      onPressed: () {},
-      child: Text(widget.text),
-      onHover: (value) {
-        setState(() {
-          color = (value == true) ? Theme.of(context).colorScheme.secondary : blanco;
+        style: ButtonStyle(foregroundColor: MaterialStatePropertyAll(color)),
+        onPressed: () {},
+        child: Text(widget.text),
+        onHover: (value) {
+          setState(() {
+            color =
+                (value == true) ? Theme.of(context).colorScheme.secondary : Theme.of(context).colorScheme.onBackground;
+          });
         });
-      } 
-    );
   }
 }

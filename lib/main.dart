@@ -26,12 +26,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<LanguageProvider>().loadLanguage();
+    context.read<ThemeProvider>().loadTheme();
     return ResponsiveApp(
       builder: (context) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
         title: 'KCH PORTFOLIO',
         routerConfig: appRouter,
-        theme: AppTheme.darkTheme(),
+        theme: context.watch<ThemeProvider>().theme,
         locale: Locale(context.watch<LanguageProvider>().language),
         localizationsDelegates: const [
           AppLocalizations.delegate,

@@ -25,7 +25,6 @@ class LanguageProvider extends ChangeNotifier {
     } else {
       loadLanguage();
     }
-    _language = language;
     _saveLanguage(_language);
     notifyListeners();
   }
