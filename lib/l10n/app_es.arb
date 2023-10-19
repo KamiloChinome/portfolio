@@ -4,5 +4,9 @@
     "experience": "Experiencia",
     "work": "Proyectos",
     "contact": "Contacto",
-    "resume": "Currículum"
+    "resume": "Currículum",
+    "kamiloChinome": "Kamilo Chinome",
+    "helloMyNameIs": "Hola, mi nombre es",
+    "iAmFlutterDeveloper": "Soy desarrollador Flutter",
+    "aboutMe": "Soy un desarrollador de software multiplataforma experimentado en el uso de Flutter y Dart. Me enfoco en la creación de aplicaciones móviles. Mi compromiso es el desarrollo escalables, limpio y eficiente, aprovechando las últimas tecnologías disponibles."
 }

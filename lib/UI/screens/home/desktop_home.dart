@@ -3,9 +3,11 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:portfolio/UI/providers/language_provider.dart';
 import 'package:portfolio/UI/providers/theme_provider.dart';
+import 'package:portfolio/UI/widgets/animated_text_about_me.dart';
 import 'package:portfolio/UI/widgets/shared/shared_widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class DesktopHomeScreen extends StatelessWidget {
   const DesktopHomeScreen({Key? key}) : super(key: key);
@@ -16,27 +18,73 @@ class DesktopHomeScreen extends StatelessWidget {
         body: Stack(
       children: [
         CustomScrollView(
-          slivers: [const _SliverAppBar(), SliverList.list(children: const [])],
+          slivers: [
+            const _SliverAppBar(),
+            SliverList.list(children: const [_AboutMe()])
+          ],
         ),
         const _SocialMediaSection(),
-        Positioned(
-            bottom: 15,
-            right: 40,
-            child: Column(
-              children: [
-                SharedTextIconButton(
-                  text: (context.watch<LanguageProvider>().language == 'en') ? 'es' : 'en',
-                  onTap: () => context.read<LanguageProvider>().changeLanguage(),
-                ),
-                const SizedBox(height: 7),
-                SharedIconButton(
-                  icon: (context.watch<ThemeProvider>().isDarkMode) ? Icons.light_mode : Icons.dark_mode,
-                  onTap: () => context.read<ThemeProvider>().changeTheme(),
-                ),
-              ],
-            ))
+        const _ConfigurationSection()
       ],
     ));
+  }
+}
+
+class _AboutMe extends StatelessWidget {
+  const _AboutMe();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(right: 35.screenWidth, left: 35.screenWidth, top: 6.screenHeight),
+      // color: Colors.red,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SharedAnimatedText(),
+          Text(
+            AppLocalizations.of(context)!.kamiloChinome,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          Text(
+            AppLocalizations.of(context)!.iAmFlutterDeveloper,
+            style: Theme.of(context)
+                .textTheme
+                .titleLarge!
+                .copyWith(color: Theme.of(context).colorScheme.onBackground.withOpacity(.5)),
+          ),
+          const SizedBox(height: 25),
+          Padding(
+            padding: EdgeInsets.only(right: 50.screenWidth),
+            child: Text(AppLocalizations.of(context)!.aboutMe),
+          )
+        ].animate().slideY(),
+      ),
+    );
+  }
+}
+
+class _ConfigurationSection extends StatelessWidget {
+  const _ConfigurationSection();
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+        bottom: 15,
+        right: 40,
+        child: Column(
+          children: [
+            SharedTextIconButton(
+              text: (context.watch<LanguageProvider>().language == 'en') ? 'es' : 'en',
+              onTap: () => context.read<LanguageProvider>().changeLanguage(),
+            ),
+            const SizedBox(height: 7),
+            SharedIconButton(
+              icon: (context.watch<ThemeProvider>().isDarkMode) ? Icons.light_mode : Icons.dark_mode,
+              onTap: () => context.read<ThemeProvider>().changeTheme(),
+            ),
+          ].animate().slideY(),
+        ));
   }
 }
 

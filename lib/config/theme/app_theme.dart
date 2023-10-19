@@ -26,7 +26,11 @@ class AppTheme {
                 side: const BorderSide(color: darkSecondary),
                 foregroundColor: darkSecondary)
             .copyWith(overlayColor: const MaterialStatePropertyAll(darkOverlayColor)),
-      ));
+      ),
+      textTheme: const TextTheme(
+          bodyMedium: TextStyle(color: darkOnBackground, fontSize: 17),
+          titleLarge: TextStyle(color: darkOnBackground, fontSize: 70),
+          titleSmall: TextStyle(color: darkSecondary, fontFamily: 'PixelifySans', fontSize: 20, letterSpacing: 1)));
 
   static lightTheme() => ThemeData(
       useMaterial3: true,
