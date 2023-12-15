@@ -7,11 +7,12 @@ class SharedSliverAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return SliverAppBar(
-      toolbarHeight: 90,
-      leadingWidth: 140,
+      toolbarHeight: height * .15,
+      leadingWidth: width * .1,
       floating: true,
-      // shadowColor: Colors.black,
       leading: leading,
       actions: actions,
     );

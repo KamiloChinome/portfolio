@@ -10,6 +10,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenTypeLayout.builder(
       desktop: (context) => const DesktopHomeScreen(),
+      mobile: (context) => const DesktopHomeScreen(),
     );
   }
 }

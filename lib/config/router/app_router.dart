@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/UI/screens/screens.dart';
 
-final appRouter = GoRouter(initialLocation: '/home', routes: [
+final appRouter = GoRouter(initialLocation: '/', routes: [
   GoRoute(
-    path: '/home',
+    path: '/',
     name: HomeScreen.name,
     builder: (context, state) => const HomeScreen(),
   ),
@@ -14,25 +13,3 @@ final appRouter = GoRouter(initialLocation: '/home', routes: [
     builder: (context, state) => const SplashScreen(),
   )
 ]);
-
-class NewWidget extends StatelessWidget {
-  const NewWidget({
-    super.key,
-    required this.animation,
-    required this.child,
-  });
-  final Animation<double> animation;
-  final Widget child;
-  @override
-  Widget build(BuildContext context) {
-    return SlideTransition(
-      position: Tween<Offset>(
-        begin: const Offset(1, 0),
-        end: const Offset(0, 0),
-      ).animate(
-        animation,
-      ),
-      child: child,
-    );
-  }
-}
