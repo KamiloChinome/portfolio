@@ -5,8 +5,12 @@ class AppTheme {
   static ThemeData darkTheme() => ThemeData(
         fontFamily: 'SpaceGrotesk',
         useMaterial3: true,
-        colorScheme:
-            const ColorScheme.dark(primary: darkPrimary, secondary: darkSecondary, onBackground: darkOnBackground),
+        colorScheme: const ColorScheme.dark(
+          background: darkBackground,
+          primary: darkPrimary,
+          secondary: darkSecondary,
+          onBackground: darkOnBackground,
+        ),
         scaffoldBackgroundColor: darkBackground,
         appBarTheme: const AppBarTheme(
           backgroundColor: darkBackground,
@@ -29,7 +33,6 @@ class AppTheme {
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
-            textStyle: const TextStyle(fontSize: 15),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(7),
             ),

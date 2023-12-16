@@ -10,7 +10,7 @@ class SharedSliverAppBar extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return SliverAppBar(
-      toolbarHeight: height * .15,
+      toolbarHeight: 100,
       leadingWidth: width * .1,
       floating: true,
       leading: leading,

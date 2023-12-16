@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/UI/screens/screens.dart';
 
-final appRouter = GoRouter(initialLocation: '/', routes: [
+final appRouter = GoRouter(initialLocation: '/splash', routes: [
   GoRoute(
     path: '/',
     name: HomeScreen.name,
