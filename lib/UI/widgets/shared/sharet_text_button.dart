@@ -16,6 +16,7 @@ class _SharedTextButtonState extends State<SharedTextButton> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    // color = Theme.of(context).colorScheme.onBackground;
     color = Theme.of(context).colorScheme.onBackground;
   }
 

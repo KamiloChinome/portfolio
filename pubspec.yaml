@@ -31,6 +31,7 @@ flutter:
   generate: true
   assets:
     - assets/
+    - assets/images/
 
   fonts:
     - family: PixelifySans

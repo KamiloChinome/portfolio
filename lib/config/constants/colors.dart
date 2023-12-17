@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const Color darkBackground = Color(0XFF1e293b);
+const Color darkSurface = Color(0XFF334155);
 const Color darkPrimary = Color(0XFF383c44);
 const Color darkSecondary = Color(0XFF54c5f8);
 const Color darkOverlayColor = Color(0x61676F84);

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:portfolio/UI/providers/language_provider.dart';
 import 'package:portfolio/UI/widgets/about_me_animated_text.dart';
-import 'package:portfolio/UI/widgets/shared/shared_widgets.dart';
+import 'package:portfolio/UI/widgets/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
 
 class DesktopHomeScreen extends StatelessWidget {
   const DesktopHomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
         body: Stack(
       children: [
@@ -19,19 +18,27 @@ class DesktopHomeScreen extends StatelessWidget {
           slivers: [
             const _SliverAppBar(),
             SliverList.list(
-              children: const [_AboutMe(), _Skills()],
+              children: [
+                SizedBox(height: height * .1),
+                const _AboutMe(),
+                SizedBox(height: height * .3),
+                const _Skills(),
+                SizedBox(height: height * .2),
+                const _Proyects(),
+                SizedBox(height: height * .2),
+              ],
             ),
           ],
         ),
-        const _SocialMediaSection(),
-        const _ConfigurationSection()
+        const SocialMediaSection(),
+        const ConfigurationSection()
       ],
     ));
   }
 }
 
-class _Skills extends StatelessWidget {
-  const _Skills();
+class _Proyects extends StatelessWidget {
+  const _Proyects();
 
   @override
   Widget build(BuildContext context) {
@@ -40,50 +47,119 @@ class _Skills extends StatelessWidget {
     TextTheme textStyle = Theme.of(context).textTheme;
     ColorScheme colors = Theme.of(context).colorScheme;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: width * .11, vertical: height * .13),
+      padding: EdgeInsets.symmetric(horizontal: width * .13),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Center(
-            child: Text(
-              'Habilidades',
-              style: textStyle.titleLarge!.copyWith(color: colors.secondary),
-            ),
+          Text(
+            'Proyectos',
+            style: textStyle.titleLarge!.copyWith(color: colors.secondary, fontFamily: 'PixelifySans'),
           ),
           const Divider(),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _LogoSkill(Brands.flutter, 'Flutter'),
-              _LogoSkill(Brands.dart, 'Dart'),
-              _LogoSkill(Brands.git, 'Git'),
-              _LogoSkill(Brands.firebase, 'Firebase'),
-              _LogoSkill(Brands.docker, 'Docker'),
-              _LogoSkill(Brands.postgresql, 'PostgreSQL'),
-            ],
+          SizedBox(height: height * .01),
+          SizedBox(
+            width: double.infinity,
+            child: Stack(
+              children: [
+                // Positioned(
+                //   child: Image.asset(
+                //     'assets/images/petto-proyect.png',
+                //     width: width * .4,
+                //     fit: BoxFit.cover,
+                //   ),
+                // ),
+                Padding(
+                  padding: EdgeInsets.only(left: width * .35),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Petto',
+                        style: textStyle.titleLarge,
+                      ),
+                      Text(
+                        'Proyecto real',
+                        style: textStyle.titleSmall!.copyWith(
+                          fontFamily: 'PixelifySans',
+                          color: colors.secondary,
+                        ),
+                      ),
+                      SizedBox(height: height * .01),
+                      Container(
+                        padding: EdgeInsets.all(width * .01),
+                        color: colors.surface,
+                        child: Text(
+                          'Petto es tu aliado para el cuidado de mascotas. Acceso rápido a datos importantes, recordatorios clave para citas y vacunas, además de consejos expertos para mantener a tus amigos peludos sanos y felices. Simplifica tu vida cuidando a tus mascotas con Petto.',
+                          textAlign: TextAlign.end,
+                          style: textStyle.bodyLarge,
+                        ),
+                      ),
+                      SizedBox(height: height * .01),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const SharedSkillProyectText('Flutter'),
+                          SizedBox(width: width * .01),
+                          const SharedSkillProyectText('Dart'),
+                          SizedBox(width: width * .01),
+                          const SharedSkillProyectText('Firebase'),
+                          SizedBox(width: width * .01),
+                          const SharedSkillProyectText('Git'),
+                          SizedBox(width: width * .01),
+                          const SharedSkillProyectText('SOLID'),
+                          SizedBox(width: width * .01),
+                          const SharedSkillProyectText('Clean Arquitecture'),
+                        ],
+                      ),
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          SharedIconButton(icon: BoxIcons.bxl_github),
+                          SharedIconButton(icon: BoxIcons.bx_link_external),
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           )
-        ].animate().slideX().fadeIn(),
+        ],
       ),
     );
   }
 }
 
-class _LogoSkill extends StatelessWidget {
-  final String brandLogo;
-  final String text;
-  const _LogoSkill(this.brandLogo, this.text);
+class _Skills extends StatelessWidget {
+  const _Skills();
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Column(
-      children: [
-        Brand(
-          brandLogo,
-          size: width * .05,
-        ),
-        Text(text)
-      ],
+    TextTheme textStyle = Theme.of(context).textTheme;
+    ColorScheme colors = Theme.of(context).colorScheme;
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: width * .13),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            'Habilidades',
+            style: textStyle.titleLarge!.copyWith(color: colors.secondary, fontFamily: 'PixelifySans'),
+          ),
+          const Divider(),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SharedLogoSkill(Brands.flutter, 'Flutter'),
+              SharedLogoSkill(Brands.dart, 'Dart'),
+              SharedLogoSkill(Brands.git, 'Git'),
+              SharedLogoSkill(Brands.firebase, 'Firebase'),
+              SharedLogoSkill(Brands.docker, 'Docker'),
+              SharedLogoSkill(Brands.postgresql, 'PostgreSQL'),
+            ],
+          )
+        ].animate().slideX().fadeIn(),
+      ),
     );
   }
 }
@@ -93,14 +169,13 @@ class _AboutMe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     TextTheme textStyle = Theme.of(context).textTheme;
     ColorScheme colors = Theme.of(context).colorScheme;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: width * .11, vertical: height * .13),
+      padding: EdgeInsets.symmetric(horizontal: width * .13),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const AboutMeAnimatedText(),
           Text(
@@ -116,36 +191,14 @@ class _AboutMe extends StatelessWidget {
           ),
           const SizedBox(height: 25),
           Padding(
-            padding: EdgeInsets.only(right: width * .35),
+            padding: EdgeInsets.symmetric(horizontal: width * .15),
             child: Text(
               AppLocalizations.of(context)!.aboutMe,
               style: textStyle.bodyLarge,
+              textAlign: TextAlign.center,
             ),
           )
-        ].animate().slideY(begin: 2, duration: const Duration(milliseconds: 500)).fadeIn(),
-      ),
-    );
-  }
-}
-
-class _ConfigurationSection extends StatelessWidget {
-  const _ConfigurationSection();
-
-  @override
-  Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-    return Positioned(
-      bottom: height * .01,
-      right: width * .03,
-      child: Column(
-        children: [
-          SharedTextIconButton(
-            text: (context.watch<LanguageProvider>().language == 'en') ? 'es' : 'en',
-            onTap: () => context.read<LanguageProvider>().changeLanguage(),
-          ),
-          SizedBox(height: height * .03),
-        ].animate().slideY(duration: const Duration(milliseconds: 600)).fadeIn(),
+        ].animate().slideY(begin: 1, duration: const Duration(milliseconds: 500)).fadeIn(),
       ),
     );
   }
@@ -182,32 +235,6 @@ class _SliverAppBar extends StatelessWidget {
         SharedOutlinedButton(text: AppLocalizations.of(context)!.resume),
         SizedBox(width: width * .03),
       ].animate().slideY(duration: const Duration(milliseconds: 600)).fadeIn(),
-    );
-  }
-}
-
-class _SocialMediaSection extends StatelessWidget {
-  const _SocialMediaSection();
-
-  @override
-  Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-    return Positioned(
-      bottom: height * .01,
-      left: width * .03,
-      child: Column(
-        children: [
-          SharedIconButton(icon: IonIcons.logo_linkedin, onTap: () {}),
-          SizedBox(height: height * .01),
-          SharedIconButton(icon: IonIcons.logo_github, onTap: () {}),
-          SizedBox(height: height * .01),
-          SharedIconButton(icon: IonIcons.logo_instagram, onTap: () {}),
-          SizedBox(height: height * .01),
-          SharedIconButton(icon: IonIcons.mail, onTap: () {}),
-          SizedBox(height: height * .03),
-        ].animate().slideY(duration: const Duration(milliseconds: 600)).fadeIn(),
-      ),
     );
   }
 }

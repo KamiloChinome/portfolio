@@ -7,6 +7,7 @@ class AppTheme {
         useMaterial3: true,
         colorScheme: const ColorScheme.dark(
           background: darkBackground,
+          surface: darkSurface,
           primary: darkPrimary,
           secondary: darkSecondary,
           onBackground: darkOnBackground,
