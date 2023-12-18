@@ -20,7 +20,7 @@ class AppTheme {
           style: ButtonStyle(
             overlayColor: MaterialStatePropertyAll(darkOverlayColor),
             textStyle: MaterialStatePropertyAll(
-              TextStyle(),
+              TextStyle(color: darkOnBackground),
             ),
           ),
         ),

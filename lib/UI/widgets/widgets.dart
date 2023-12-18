@@ -1,3 +1,5 @@
+export 'package:portfolio/UI/widgets/proyect.dart';
+
 export 'package:portfolio/UI/widgets/shared/shared_skill_proyect_text.dart';
 
 export 'package:portfolio/UI/widgets/shared/shared_logo_skill.dart';

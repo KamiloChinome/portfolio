@@ -55,73 +55,14 @@ class _Proyects extends StatelessWidget {
             style: textStyle.titleLarge!.copyWith(color: colors.secondary, fontFamily: 'PixelifySans'),
           ),
           const Divider(),
-          SizedBox(height: height * .01),
-          SizedBox(
-            width: double.infinity,
-            child: Stack(
-              children: [
-                // Positioned(
-                //   child: Image.asset(
-                //     'assets/images/petto-proyect.png',
-                //     width: width * .4,
-                //     fit: BoxFit.cover,
-                //   ),
-                // ),
-                Padding(
-                  padding: EdgeInsets.only(left: width * .35),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Petto',
-                        style: textStyle.titleLarge,
-                      ),
-                      Text(
-                        'Proyecto real',
-                        style: textStyle.titleSmall!.copyWith(
-                          fontFamily: 'PixelifySans',
-                          color: colors.secondary,
-                        ),
-                      ),
-                      SizedBox(height: height * .01),
-                      Container(
-                        padding: EdgeInsets.all(width * .01),
-                        color: colors.surface,
-                        child: Text(
-                          'Petto es tu aliado para el cuidado de mascotas. Acceso rápido a datos importantes, recordatorios clave para citas y vacunas, además de consejos expertos para mantener a tus amigos peludos sanos y felices. Simplifica tu vida cuidando a tus mascotas con Petto.',
-                          textAlign: TextAlign.end,
-                          style: textStyle.bodyLarge,
-                        ),
-                      ),
-                      SizedBox(height: height * .01),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          const SharedSkillProyectText('Flutter'),
-                          SizedBox(width: width * .01),
-                          const SharedSkillProyectText('Dart'),
-                          SizedBox(width: width * .01),
-                          const SharedSkillProyectText('Firebase'),
-                          SizedBox(width: width * .01),
-                          const SharedSkillProyectText('Git'),
-                          SizedBox(width: width * .01),
-                          const SharedSkillProyectText('SOLID'),
-                          SizedBox(width: width * .01),
-                          const SharedSkillProyectText('Clean Arquitecture'),
-                        ],
-                      ),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          SharedIconButton(icon: BoxIcons.bxl_github),
-                          SharedIconButton(icon: BoxIcons.bx_link_external),
-                        ],
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
+          SizedBox(height: height * .1),
+          const Proyect(
+            assetImage: 'assets/images/petto-proyect.png',
+            title: 'Petto',
+            typeProyect: 'Proyecto real',
+            description:
+                'Petto es tu aliado para el cuidado de mascotas. Acceso rápido a datos importantes, recordatorios clave para citas y vacunas, además de consejos expertos para mantener a tus amigos peludos sanos y felices. Simplifica tu vida cuidando a tus mascotas con Petto.',
+            skills: ['Flutter', 'Dart', 'Firebase', 'Git', 'SOLID', 'Clean Arquitecture'],
           )
         ],
       ),
