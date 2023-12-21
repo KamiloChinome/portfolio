@@ -91,6 +91,7 @@ class _JobCardState extends State<JobCard> {
                         Expanded(
                           child: Text(
                             widget.job.contributions[index],
+                            style: textStyle.bodyLarge,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 4,
                           ),
