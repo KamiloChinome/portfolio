@@ -254,9 +254,9 @@ class _SliverAppBar extends StatelessWidget {
       actions: [
         SharedTextButton(text: AppLocalizations.of(context)!.about),
         SizedBox(width: width * .01),
-        SharedTextButton(text: AppLocalizations.of(context)!.experience),
-        SizedBox(width: width * .01),
         SharedTextButton(text: AppLocalizations.of(context)!.work),
+        SizedBox(width: width * .01),
+        SharedTextButton(text: AppLocalizations.of(context)!.experience),
         SizedBox(width: width * .01),
         SharedTextButton(text: AppLocalizations.of(context)!.contact),
         SizedBox(width: width * .01),

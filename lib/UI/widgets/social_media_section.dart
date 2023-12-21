@@ -20,8 +20,6 @@ class SocialMediaSection extends StatelessWidget {
           SharedIconButton(icon: IonIcons.logo_github, onTap: () {}),
           SizedBox(height: height * .01),
           SharedIconButton(icon: IonIcons.logo_instagram, onTap: () {}),
-          SizedBox(height: height * .01),
-          SharedIconButton(icon: IonIcons.mail, onTap: () {}),
           SizedBox(height: height * .03),
         ].animate().slideY(duration: const Duration(milliseconds: 600)).fadeIn(),
       ),
