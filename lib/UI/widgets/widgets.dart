@@ -1,3 +1,5 @@
+export 'package:portfolio/UI/widgets/job_card.dart';
+
 export 'package:portfolio/UI/widgets/proyect.dart';
 
 export 'package:portfolio/UI/widgets/shared/shared_skill_proyect_text.dart';

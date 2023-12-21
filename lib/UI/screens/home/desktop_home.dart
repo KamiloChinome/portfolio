@@ -4,6 +4,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:portfolio/UI/widgets/about_me_animated_text.dart';
 import 'package:portfolio/UI/widgets/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:portfolio/models/job_model.dart';
 
 class DesktopHomeScreen extends StatelessWidget {
   const DesktopHomeScreen({Key? key}) : super(key: key);
@@ -26,6 +27,8 @@ class DesktopHomeScreen extends StatelessWidget {
                 SizedBox(height: height * .2),
                 const _Proyects(),
                 SizedBox(height: height * .2),
+                const _Experience(),
+                SizedBox(height: height * .2),
               ],
             ),
           ],
@@ -34,6 +37,75 @@ class DesktopHomeScreen extends StatelessWidget {
         const ConfigurationSection()
       ],
     ));
+  }
+}
+
+class _Experience extends StatelessWidget {
+  const _Experience();
+
+  @override
+  Widget build(BuildContext context) {
+    List<Job> jobs = [
+      Job(
+        jobTitle: AppLocalizations.of(context)!.flutterDeveloper,
+        companyName: 'Santo Mining Corp',
+        period: 'DEC 2023 - ACTUALMENTE',
+        contributions: [
+          AppLocalizations.of(context)!.requirementsIdentification,
+          AppLocalizations.of(context)!.comprehensiveMobileApps,
+        ],
+      ),
+      Job(
+        jobTitle: AppLocalizations.of(context)!.flutterDeveloper,
+        companyName: 'TalentPitch',
+        period: 'MAY 2023 - OCT 2023',
+        contributions: [
+          AppLocalizations.of(context)!.maintenanceOptimization,
+          AppLocalizations.of(context)!.efficientBugFixing,
+          AppLocalizations.of(context)!.responsiveMobileApps,
+        ],
+      ),
+      Job(
+        jobTitle: AppLocalizations.of(context)!.flutterDeveloper,
+        companyName: 'Freelance',
+        period: 'OCT 2022 - MAY 2023',
+        contributions: [
+          AppLocalizations.of(context)!.endtoEndMobileApps,
+          AppLocalizations.of(context)!.successfulIntegration,
+          AppLocalizations.of(context)!.thirdPartyLibraries,
+        ],
+      ),
+    ];
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    TextTheme textStyle = Theme.of(context).textTheme;
+    ColorScheme colors = Theme.of(context).colorScheme;
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: width * .13),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            AppLocalizations.of(context)!.workExperience,
+            style: textStyle.titleLarge!.copyWith(color: colors.secondary, fontFamily: 'PixelifySans'),
+          ),
+          const Divider(),
+          SizedBox(height: height * .1),
+          GridView.count(
+            crossAxisCount: 3,
+            crossAxisSpacing: width * .01,
+            mainAxisSpacing: width * .01,
+            shrinkWrap: true,
+            children: List.generate(
+              jobs.length,
+              (index) => JobCard(
+                job: jobs[index],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -49,22 +121,35 @@ class _Proyects extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: width * .13),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            'Proyectos',
+            AppLocalizations.of(context)!.projects,
             style: textStyle.titleLarge!.copyWith(color: colors.secondary, fontFamily: 'PixelifySans'),
           ),
           const Divider(),
           SizedBox(height: height * .1),
-          const Proyect(
+          Proyectv2(
             assetImage: 'assets/images/petto-proyect.png',
             title: 'Petto',
-            typeProyect: 'Proyecto real',
-            description:
-                'Petto es tu aliado para el cuidado de mascotas. Acceso rápido a datos importantes, recordatorios clave para citas y vacunas, además de consejos expertos para mantener a tus amigos peludos sanos y felices. Simplifica tu vida cuidando a tus mascotas con Petto.',
-            skills: ['Flutter', 'Dart', 'Firebase', 'Git', 'SOLID', 'Clean Arquitecture'],
-          )
-        ],
+            description: AppLocalizations.of(context)!.pettoDescription,
+            skills: const ['Flutter', 'Dart', 'Firebase', 'Git', 'SOLID', 'Clean Arquitecture'],
+          ),
+          SizedBox(height: height * .25),
+          Proyectv1(
+            assetImage: 'assets/images/MiProceso-proyect.png',
+            title: 'Mi Proceso',
+            description: AppLocalizations.of(context)!.legalProcessInterface,
+            skills: const ['Flutter', 'Dart', 'Git', 'Clean Arquitecture'],
+          ),
+          SizedBox(height: height * .3),
+          Proyectv2(
+            assetImage: 'assets/images/cinemapedia-proyect.png',
+            title: 'Cinemapedia',
+            description: AppLocalizations.of(context)!.movieAppDescription,
+            skills: const ['Flutter', 'Dart', 'API', 'Git', 'SOLID', 'Clean Arquitecture'],
+          ),
+        ].animate().slideY(begin: 1, duration: const Duration(milliseconds: 500)).fadeIn(),
       ),
     );
   }
@@ -76,6 +161,7 @@ class _Skills extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     TextTheme textStyle = Theme.of(context).textTheme;
     ColorScheme colors = Theme.of(context).colorScheme;
     return Padding(
@@ -84,10 +170,11 @@ class _Skills extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            'Habilidades',
+            AppLocalizations.of(context)!.skills,
             style: textStyle.titleLarge!.copyWith(color: colors.secondary, fontFamily: 'PixelifySans'),
           ),
           const Divider(),
+          SizedBox(height: height * .05),
           const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -99,7 +186,7 @@ class _Skills extends StatelessWidget {
               SharedLogoSkill(Brands.postgresql, 'PostgreSQL'),
             ],
           )
-        ].animate().slideX().fadeIn(),
+        ].animate().slideY(begin: 1, duration: const Duration(milliseconds: 500)).fadeIn(),
       ),
     );
   }
