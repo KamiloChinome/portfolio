@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:portfolio/UI/providers/language_provider.dart';
+import 'package:portfolio/UI/providers/providers.dart';
 import 'package:portfolio/UI/widgets/shared/shared_icon_button.dart';
 import 'package:provider/provider.dart';
 
