@@ -112,8 +112,9 @@ class Proyectv2 extends StatelessWidget {
       width: double.infinity,
       child: Stack(
         children: [
-          Align(
-            alignment: Alignment.centerRight,
+          Positioned(
+            right: 0,
+            top: 0,
             child: Image.asset(
               assetImage,
               width: width * .37,
@@ -122,57 +123,53 @@ class Proyectv2 extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(right: width * .35),
-            child: Positioned(
-              left: 0,
-              top: 0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: textStyle.titleLarge,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: textStyle.titleLarge,
+                ),
+                Text(
+                  'Proyecto Destacado',
+                  style: textStyle.titleSmall!.copyWith(
+                    fontFamily: 'PixelifySans',
+                    color: colors.secondary,
                   ),
-                  Text(
-                    'Proyecto Destacado',
-                    style: textStyle.titleSmall!.copyWith(
-                      fontFamily: 'PixelifySans',
-                      color: colors.secondary,
-                    ),
+                ),
+                SizedBox(height: height * .01),
+                Container(
+                  padding: EdgeInsets.all(width * .01),
+                  color: colors.surface,
+                  child: Text(
+                    description,
+                    textAlign: TextAlign.start,
+                    style: textStyle.bodyLarge,
                   ),
-                  SizedBox(height: height * .01),
-                  Container(
-                    padding: EdgeInsets.all(width * .01),
-                    color: colors.surface,
-                    child: Text(
-                      description,
-                      textAlign: TextAlign.start,
-                      style: textStyle.bodyLarge,
-                    ),
+                ),
+                SizedBox(height: height * .01),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: List.generate(
+                    skills.length,
+                    (index) {
+                      return Row(
+                        children: [
+                          SharedSkillProyectText(skills[index]),
+                          SizedBox(width: width * .01),
+                        ],
+                      );
+                    },
                   ),
-                  SizedBox(height: height * .01),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: List.generate(
-                      skills.length,
-                      (index) {
-                        return Row(
-                          children: [
-                            SharedSkillProyectText(skills[index]),
-                            SizedBox(width: width * .01),
-                          ],
-                        );
-                      },
-                    ),
-                  ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SharedIconButton(icon: BoxIcons.bxl_github),
-                      SharedIconButton(icon: BoxIcons.bx_link_external),
-                    ],
-                  )
-                ],
-              ),
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SharedIconButton(icon: BoxIcons.bxl_github),
+                    SharedIconButton(icon: BoxIcons.bx_link_external),
+                  ],
+                )
+              ],
             ),
           ),
         ],
