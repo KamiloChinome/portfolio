@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<LanguageProvider>().loadLanguage();
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'KCH PORTFOLIO',
