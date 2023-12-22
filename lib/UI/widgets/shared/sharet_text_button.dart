@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class SharedTextButton extends StatefulWidget {
+  final String text;
+  final Function()? onPressed;
   const SharedTextButton({
     super.key,
     required this.text,
+    this.onPressed,
   });
-  final String text;
 
   @override
   State<SharedTextButton> createState() => _SharedTextButtonState();
@@ -24,8 +26,10 @@ class _SharedTextButtonState extends State<SharedTextButton> {
     TextTheme textStyles = Theme.of(context).textTheme;
     return TextButton(
       style: ButtonStyle(
-          foregroundColor: MaterialStatePropertyAll(color), textStyle: MaterialStatePropertyAll(textStyles.titleSmall)),
-      onPressed: () {},
+        foregroundColor: MaterialStatePropertyAll(color),
+        textStyle: MaterialStatePropertyAll(textStyles.titleSmall),
+      ),
+      onPressed: widget.onPressed,
       child: Text(widget.text),
       onHover: (value) {
         setState(

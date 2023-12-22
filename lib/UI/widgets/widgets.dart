@@ -1,3 +1,5 @@
+export 'package:portfolio/UI/widgets/contact_card.dart';
+
 export 'package:portfolio/UI/widgets/job_card.dart';
 
 export 'package:portfolio/UI/widgets/proyect.dart';
