@@ -1,10 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:portfolio/UI/widgets/about_me_animated_text.dart';
 import 'package:portfolio/UI/widgets/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
