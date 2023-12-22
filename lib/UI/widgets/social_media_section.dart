@@ -3,14 +3,13 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:portfolio/UI/widgets/shared/shared_icon_button.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class SocialMediaSection extends StatelessWidget {
   const SocialMediaSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    _launchURL(String url) async {
+    launchURL(String url) async {
       try {
         Uri uri = Uri.parse(url);
         if (await canLaunchUrl(uri)) {
@@ -33,19 +32,19 @@ class SocialMediaSection extends StatelessWidget {
           SharedIconButton(
               icon: IonIcons.logo_linkedin,
               onTap: () {
-                _launchURL('https://www.linkedin.com/in/kamilochinome');
+                launchURL('https://www.linkedin.com/in/kamilochinome');
               }),
           SizedBox(height: height * .01),
           SharedIconButton(
               icon: IonIcons.logo_github,
               onTap: () {
-                _launchURL('https://github.com/KamiloChinome');
+                launchURL('https://github.com/KamiloChinome');
               }),
           SizedBox(height: height * .01),
           SharedIconButton(
               icon: IonIcons.logo_instagram,
               onTap: () {
-                _launchURL('https://www.instagram.com/kmilo_chinome');
+                launchURL('https://www.instagram.com/kmilo_chinome');
               }),
           SizedBox(height: height * .03),
         ].animate().slideY(duration: const Duration(milliseconds: 600)).fadeIn(),

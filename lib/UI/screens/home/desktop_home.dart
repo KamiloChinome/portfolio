@@ -322,7 +322,7 @@ class _SliverAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _launchURL(String url) async {
+    launchURL(String url) async {
       try {
         Uri uri = Uri.parse(url);
         if (await canLaunchUrl(uri)) {
@@ -379,7 +379,7 @@ class _SliverAppBar extends StatelessWidget {
         SizedBox(width: width * .01),
         SharedOutlinedButton(
           text: AppLocalizations.of(context)!.resume,
-          onPressed: () => _launchURL(
+          onPressed: () => launchURL(
               'https://firebasestorage.googleapis.com/v0/b/petto-18ace.appspot.com/o/CV%20KAMILO%20CHINOME.pdf?alt=media&token=1cda18c7-cdbf-4ab0-aa30-15f233dd4b55'),
         ),
         SizedBox(width: width * .03),
