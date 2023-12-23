@@ -33,7 +33,7 @@ class Proyectv1 extends StatelessWidget {
             fit: BoxFit.cover,
           ),
           Padding(
-            padding: EdgeInsets.only(left: width * .35),
+            padding: EdgeInsets.only(left: width * .346),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -110,11 +110,12 @@ class Proyectv2 extends StatelessWidget {
     ColorScheme colors = Theme.of(context).colorScheme;
     return SizedBox(
       width: double.infinity,
+      height: height * .60,
       child: Stack(
         children: [
           Positioned(
-            right: 0,
             top: 0,
+            right: 0,
             child: Image.asset(
               assetImage,
               width: width * .37,
@@ -122,7 +123,7 @@ class Proyectv2 extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(right: width * .35),
+            padding: EdgeInsets.only(right: width * .346),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

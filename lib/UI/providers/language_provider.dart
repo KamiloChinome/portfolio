@@ -4,6 +4,10 @@ import 'package:portfolio/utils/local_storage.dart';
 class LanguageProvider extends ChangeNotifier {
   String _language = 'en';
   String get language => _language;
+  set language(String value) {
+    _language = value;
+    notifyListeners();
+  }
 
   LanguageProvider() {
     _loadLanguage();
@@ -12,8 +16,7 @@ class LanguageProvider extends ChangeNotifier {
   _loadLanguage() async {
     final languagePrefs = LocalStorage.prefs.getString('language');
     if (languagePrefs != null) {
-      _language = languagePrefs;
-      notifyListeners();
+      language = languagePrefs;
     }
   }
 
@@ -23,12 +26,11 @@ class LanguageProvider extends ChangeNotifier {
   }
 
   void changeLanguage() {
-    if (_language == 'es') {
-      _language = 'en';
-    } else if (_language == 'en') {
-      _language = 'es';
+    if (language == 'es') {
+      language = 'en';
+    } else if (language == 'en') {
+      language = 'es';
     }
-    _saveLanguage(_language);
-    notifyListeners();
+    _saveLanguage(language);
   }
 }

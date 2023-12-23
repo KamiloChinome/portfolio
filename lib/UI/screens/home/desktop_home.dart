@@ -63,7 +63,7 @@ class DesktopHomeScreen extends StatelessWidget {
           ],
         ),
         const SocialMediaSection(),
-        const ConfigurationSection()
+        // const ConfigurationSection()
       ],
     ));
   }
@@ -165,7 +165,7 @@ class _Experience extends StatelessWidget {
             crossAxisCount: 3,
             crossAxisSpacing: width * .03,
             mainAxisSpacing: width * .03,
-            childAspectRatio: .9,
+            childAspectRatio: width * .0006,
             shrinkWrap: true,
             children: List.generate(
               jobs.length,

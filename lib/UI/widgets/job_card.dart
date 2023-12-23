@@ -66,6 +66,7 @@ class _JobCardState extends State<JobCard> {
                 Text(
                   widget.job.period,
                   style: textStyle.titleLarge,
+                  textAlign: TextAlign.center,
                 ),
                 SizedBox(height: height * .01),
                 Icon(
