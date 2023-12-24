@@ -29,6 +29,7 @@ class Contact extends StatelessWidget {
           const Divider(),
           SizedBox(height: height * .1),
           GridView.count(
+            physics: const NeverScrollableScrollPhysics(),
             crossAxisSpacing: width * .03,
             mainAxisSpacing: width * .03,
             childAspectRatio: aspectRatio,

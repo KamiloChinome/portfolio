@@ -116,6 +116,7 @@ class _Experience extends StatelessWidget {
           const Divider(),
           SizedBox(height: height * .1),
           GridView.count(
+            physics: const NeverScrollableScrollPhysics(),
             crossAxisCount: 3,
             crossAxisSpacing: width * .03,
             mainAxisSpacing: width * .03,
@@ -310,7 +311,7 @@ class _SliverAppBar extends StatelessWidget {
         SharedOutlinedButton(
           text: AppLocalizations.of(context)!.resume,
           onPressed: () => launchURL(
-              'https://firebasestorage.googleapis.com/v0/b/petto-18ace.appspot.com/o/CV%20KAMILO%20CHINOME.pdf?alt=media&token=1cda18c7-cdbf-4ab0-aa30-15f233dd4b55'),
+              'https://firebasestorage.googleapis.com/v0/b/kamilo-chinome.appspot.com/o/CV%20KAMILO%20CHINOME.pdf?alt=media&token=00998005-244c-4fec-b761-aa863bad4dee'),
         ),
         SizedBox(width: width * .03),
       ],
