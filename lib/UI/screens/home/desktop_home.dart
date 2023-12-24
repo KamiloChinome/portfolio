@@ -59,7 +59,6 @@ class DesktopHomeScreen extends StatelessWidget {
           ],
         ),
         const SocialMediaSection(),
-        // const ConfigurationSection()
       ],
     ));
   }

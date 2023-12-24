@@ -17,7 +17,6 @@ class MobileHomeScreen extends StatelessWidget {
     final experienceKey = GlobalKey();
     final contactKey = GlobalKey();
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
 
     Future scrollToSection(GlobalKey key) async {
       final sectionCContext = key.currentContext!;
