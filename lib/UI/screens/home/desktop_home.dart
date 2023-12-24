@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:portfolio/UI/widgets/about_me_animated_text.dart';
 import 'package:portfolio/UI/widgets/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:portfolio/models/job_model.dart';
@@ -17,6 +15,7 @@ class DesktopHomeScreen extends StatelessWidget {
     final skillsKey = GlobalKey();
     final experienceKey = GlobalKey();
     final contactKey = GlobalKey();
+    double height = MediaQuery.of(context).size.height;
 
     Future scrollToSection(GlobalKey key) async {
       final context = key.currentContext!;
@@ -27,7 +26,6 @@ class DesktopHomeScreen extends StatelessWidget {
       );
     }
 
-    double height = MediaQuery.of(context).size.height;
     return Scaffold(
         body: Stack(
       children: [
@@ -45,9 +43,7 @@ class DesktopHomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(height: height * .1),
-                  _AboutMe(
-                    key: aboutKey,
-                  ),
+                  AboutMe(key: aboutKey),
                   SizedBox(height: height * .3),
                   _Skills(key: skillsKey),
                   SizedBox(height: height * .2),
@@ -55,7 +51,7 @@ class DesktopHomeScreen extends StatelessWidget {
                   SizedBox(height: height * .2),
                   _Experience(key: experienceKey),
                   SizedBox(height: height * .2),
-                  _Contact(key: contactKey),
+                  Contact(key: contactKey),
                   SizedBox(height: height * .2),
                 ],
               ),
@@ -66,47 +62,6 @@ class DesktopHomeScreen extends StatelessWidget {
         // const ConfigurationSection()
       ],
     ));
-  }
-}
-
-class _Contact extends StatelessWidget {
-  const _Contact({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-    TextTheme textStyle = Theme.of(context).textTheme;
-    ColorScheme colors = Theme.of(context).colorScheme;
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: width * .13),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            AppLocalizations.of(context)!.contact,
-            style: textStyle.titleLarge!.copyWith(color: colors.secondary, fontFamily: 'PixelifySans'),
-          ),
-          const Divider(),
-          SizedBox(height: height * .1),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ContactCard(
-                  title: AppLocalizations.of(context)!.location,
-                  description: 'Bogotá, Colombia',
-                  icon: BoxIcons.bx_home),
-              ContactCard(
-                  title: AppLocalizations.of(context)!.phone, description: '+57 3219642996', icon: BoxIcons.bx_phone),
-              ContactCard(
-                  title: AppLocalizations.of(context)!.email,
-                  description: 'kamiloandresch@gmail.com',
-                  icon: BoxIcons.bx_envelope),
-            ],
-          )
-        ],
-      ),
-    );
   }
 }
 
@@ -189,6 +144,19 @@ class _Proyects extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     TextTheme textStyle = Theme.of(context).textTheme;
     ColorScheme colors = Theme.of(context).colorScheme;
+    launchURL(String url) async {
+      try {
+        Uri uri = Uri.parse(url);
+        if (await canLaunchUrl(uri)) {
+          await launchUrl(uri);
+        } else {
+          print('error');
+        }
+      } catch (e) {
+        print(e);
+      }
+    }
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: width * .13),
       child: Column(
@@ -200,25 +168,28 @@ class _Proyects extends StatelessWidget {
           ),
           const Divider(),
           SizedBox(height: height * .1),
-          Proyectv2(
+          DesktopProyectv2(
             assetImage: 'assets/images/petto-proyect.png',
             title: 'Petto',
             description: AppLocalizations.of(context)!.pettoDescription,
             skills: const ['Flutter', 'Dart', 'Firebase', 'Git', 'SOLID', 'Clean Arquitecture'],
+            githubOnTap: () => launchURL('https://github.com/PettoORG/petto_app'),
           ),
           SizedBox(height: height * .25),
-          Proyectv1(
+          DesktopProyectv1(
             assetImage: 'assets/images/MiProceso-proyect.png',
             title: 'Mi Proceso',
             description: AppLocalizations.of(context)!.legalProcessInterface,
             skills: const ['Flutter', 'Dart', 'Git', 'Clean Arquitecture'],
+            githubOnTap: () => launchURL('https://github.com/KamiloChinome/Flutter-Mi-Proceso-App'),
           ),
           SizedBox(height: height * .3),
-          Proyectv2(
+          DesktopProyectv2(
             assetImage: 'assets/images/cinemapedia-proyect.png',
             title: 'Cinemapedia',
             description: AppLocalizations.of(context)!.movieAppDescription,
             skills: const ['Flutter', 'Dart', 'API', 'Git', 'SOLID', 'Clean Arquitecture'],
+            githubOnTap: () => launchURL('https://github.com/KamiloChinome/FLutter-MovieLand-App'),
           ),
         ],
       ),
@@ -256,46 +227,6 @@ class _Skills extends StatelessWidget {
               SharedLogoSkill(Brands.docker, 'Docker'),
               SharedLogoSkill(Brands.postgresql, 'PostgreSQL'),
             ],
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class _AboutMe extends StatelessWidget {
-  const _AboutMe({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    TextTheme textStyle = Theme.of(context).textTheme;
-    ColorScheme colors = Theme.of(context).colorScheme;
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: width * .13),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const AboutMeAnimatedText(),
-          Text(
-            AppLocalizations.of(context)!.kamiloChinome,
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 80),
-          ),
-          Text(
-            AppLocalizations.of(context)!.iAmFlutterDeveloper,
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  color: colors.onBackground.withOpacity(.5),
-                  fontSize: 80,
-                ),
-          ),
-          const SizedBox(height: 25),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: width * .15),
-            child: Text(
-              AppLocalizations.of(context)!.aboutMe,
-              style: textStyle.bodyLarge,
-              textAlign: TextAlign.center,
-            ),
           )
         ],
       ),
@@ -350,7 +281,7 @@ class _SliverAppBar extends StatelessWidget {
           height: height * .07,
           width: height * .07,
         ),
-      ).animate().slideY(duration: const Duration(milliseconds: 600)).fadeIn(),
+      ),
       actions: [
         SharedTextButton(
           text: AppLocalizations.of(context)!.about,

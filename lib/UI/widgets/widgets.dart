@@ -1,3 +1,9 @@
+export 'package:portfolio/UI/widgets/contact.dart';
+
+export 'package:portfolio/UI/widgets/about_me_animated_text.dart';
+
+export 'package:portfolio/UI/widgets/about_me.dart';
+
 export 'package:portfolio/UI/widgets/contact_card.dart';
 
 export 'package:portfolio/UI/widgets/job_card.dart';

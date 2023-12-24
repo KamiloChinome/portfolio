@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class SharedIconButton extends StatefulWidget {
   const SharedIconButton({
@@ -23,6 +24,8 @@ class _SharedIconButtonState extends State<SharedIconButton> {
 
   @override
   Widget build(BuildContext context) {
+    DeviceScreenType deviceType = getDeviceType(MediaQuery.of(context).size);
+    double width = MediaQuery.of(context).size.width;
     return MouseRegion(
       onEnter: (event) {
         setState(() {
@@ -39,6 +42,7 @@ class _SharedIconButtonState extends State<SharedIconButton> {
         icon: Icon(
           widget.icon,
           color: color,
+          size: (deviceType == DeviceScreenType.mobile) ? width * .08 : null,
         ),
       ),
     );
