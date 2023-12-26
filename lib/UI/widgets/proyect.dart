@@ -64,18 +64,15 @@ class DesktopProyectv1 extends StatelessWidget {
                     style: textStyle.bodyLarge,
                   ),
                 ),
-                SizedBox(height: height * .01),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                GridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  crossAxisCount: 5,
+                  shrinkWrap: true,
+                  childAspectRatio: 1.7,
                   children: List.generate(
                     skills.length,
                     (index) {
-                      return Row(
-                        children: [
-                          SharedSkillProyectText(skills[index]),
-                          SizedBox(width: width * .01),
-                        ],
-                      );
+                      return SharedSkillProyectText(skills[index]);
                     },
                   ),
                 ),
@@ -161,18 +158,15 @@ class DesktopProyectv2 extends StatelessWidget {
                     style: textStyle.bodyLarge,
                   ),
                 ),
-                SizedBox(height: height * .01),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                GridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  crossAxisCount: 5,
+                  shrinkWrap: true,
+                  childAspectRatio: 1.7,
                   children: List.generate(
                     skills.length,
                     (index) {
-                      return Row(
-                        children: [
-                          SharedSkillProyectText(skills[index]),
-                          SizedBox(width: width * .01),
-                        ],
-                      );
+                      return SharedSkillProyectText(skills[index]);
                     },
                   ),
                 ),
@@ -247,18 +241,15 @@ class MobileProyectv1 extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        SizedBox(height: height * .02),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+        GridView.count(
+          physics: const NeverScrollableScrollPhysics(),
+          crossAxisCount: 4,
+          shrinkWrap: true,
+          childAspectRatio: 1.7,
           children: List.generate(
             skills.length,
             (index) {
-              return Row(
-                children: [
-                  SharedSkillProyectText(skills[index]),
-                  SizedBox(width: width * .01),
-                ],
-              );
+              return SharedSkillProyectText(skills[index]);
             },
           ),
         ),
@@ -330,18 +321,15 @@ class MobileProyectv2 extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        SizedBox(height: height * .02),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+        GridView.count(
+          physics: const NeverScrollableScrollPhysics(),
+          crossAxisCount: 4,
+          shrinkWrap: true,
+          childAspectRatio: 1.7,
           children: List.generate(
             skills.length,
             (index) {
-              return Row(
-                children: [
-                  SharedSkillProyectText(skills[index]),
-                  SizedBox(width: width * .01),
-                ],
-              );
+              return SharedSkillProyectText(skills[index]);
             },
           ),
         ),

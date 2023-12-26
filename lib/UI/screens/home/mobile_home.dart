@@ -297,7 +297,7 @@ class _Proyects extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: width * .13),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             AppLocalizations.of(context)!.projects,
@@ -353,7 +353,7 @@ class _Skills extends StatelessWidget {
             style: textStyle.titleLarge!.copyWith(color: colors.secondary, fontFamily: 'PixelifySans'),
           ),
           const Divider(),
-          SizedBox(height: height * .05),
+          SizedBox(height: height * .03),
           GridView.count(
             physics: const NeverScrollableScrollPhysics(),
             crossAxisCount: 4,
@@ -366,7 +366,7 @@ class _Skills extends StatelessWidget {
               //SizedBox) are used to center the elements in the second row.
               SizedBox(),
               SharedLogoSkill(Brands.docker, 'Docker'),
-              SharedLogoSkill(Brands.postgresql, 'PostgreSQL'),
+              SharedLogoSkill(Brands.postgresql, 'Postgre\nSQL'),
               SizedBox(),
             ],
           ),

@@ -19,6 +19,7 @@ class SharedLogoSkill extends StatelessWidget {
         Text(
           text,
           style: textStyle.titleSmall,
+          textAlign: TextAlign.center,
         )
       ],
     );
