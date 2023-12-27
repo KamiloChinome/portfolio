@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/utils/local_storage.dart';
+import 'dart:html' as html;
 
 class LanguageProvider extends ChangeNotifier {
   String _language = 'en';
@@ -31,6 +32,8 @@ class LanguageProvider extends ChangeNotifier {
     } else if (language == 'en') {
       language = 'es';
     }
+    html.window.location.reload();
     _saveLanguage(language);
+    notifyListeners();
   }
 }

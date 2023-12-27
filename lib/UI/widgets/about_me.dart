@@ -13,37 +13,32 @@ class AboutMe extends StatelessWidget {
     TextTheme textStyle = Theme.of(context).textTheme;
     ColorScheme colors = Theme.of(context).colorScheme;
     double fontSize = (deviceType == DeviceScreenType.desktop) ? 80 : 50;
-    double hPadding = (deviceType == DeviceScreenType.desktop) ? width * .13 : width * .02;
-    double textPadding = (deviceType == DeviceScreenType.desktop) ? width * .15 : width * .1;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: hPadding),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const AboutMeAnimatedText(),
-          Text(
-            AppLocalizations.of(context)!.kamiloChinome,
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: fontSize),
-            textAlign: TextAlign.center,
-          ),
-          Text(
-            AppLocalizations.of(context)!.iAmFlutterDeveloper,
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  color: colors.onBackground.withOpacity(.5),
-                  fontSize: fontSize,
-                ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 25),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: textPadding),
-            child: Text(
+      padding: EdgeInsets.symmetric(horizontal: width * .13),
+      child: SizedBox(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const AboutMeAnimatedText(),
+            Text(
+              AppLocalizations.of(context)!.kamiloChinome,
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: fontSize),
+            ),
+            Text(
+              AppLocalizations.of(context)!.iAmFlutterDeveloper,
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    color: colors.onBackground.withOpacity(.5),
+                    fontSize: fontSize,
+                  ),
+            ),
+            const SizedBox(height: 25),
+            Text(
               AppLocalizations.of(context)!.aboutMe,
               style: textStyle.bodyLarge,
-              textAlign: TextAlign.center,
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

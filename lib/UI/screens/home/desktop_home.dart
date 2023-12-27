@@ -59,6 +59,7 @@ class DesktopHomeScreen extends StatelessWidget {
           ],
         ),
         const SocialMediaSection(),
+        const ConfigurationSection()
       ],
     ));
   }
@@ -102,18 +103,12 @@ class _Experience extends StatelessWidget {
     ];
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    TextTheme textStyle = Theme.of(context).textTheme;
-    ColorScheme colors = Theme.of(context).colorScheme;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: width * .13),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            AppLocalizations.of(context)!.workExperience,
-            style: textStyle.titleLarge!.copyWith(color: colors.secondary, fontFamily: 'PixelifySans'),
-          ),
-          const Divider(),
+          SharedSectionDivider(text: AppLocalizations.of(context)!.workExperience),
           SizedBox(height: height * .1),
           GridView.count(
             physics: const NeverScrollableScrollPhysics(),
@@ -142,8 +137,6 @@ class _Proyects extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    TextTheme textStyle = Theme.of(context).textTheme;
-    ColorScheme colors = Theme.of(context).colorScheme;
     launchURL(String url) async {
       try {
         Uri uri = Uri.parse(url);
@@ -160,14 +153,37 @@ class _Proyects extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: width * .13),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            AppLocalizations.of(context)!.projects,
-            style: textStyle.titleLarge!.copyWith(color: colors.secondary, fontFamily: 'PixelifySans'),
-          ),
-          const Divider(),
-          SizedBox(height: height * .1),
+          SharedSectionDivider(text: AppLocalizations.of(context)!.projects),
+          SizedBox(height: height * .03),
+          // Column(
+          //   crossAxisAlignment: CrossAxisAlignment.end,
+          //   children: [
+          //     Text(
+          //       'Petto',
+          //       style: textStyle.titleLarge,
+          //     ),
+          //     Text(
+          //       AppLocalizations.of(context)!.featuredProject,
+          //       style: textStyle.titleSmall!.copyWith(
+          //         fontFamily: 'PixelifySans',
+          //         color: colors.secondary,
+          //       ),
+          //     ),
+          //     SizedBox(height: height * .01),
+          //     Container(
+          //       width: width * .5,
+          //       padding: EdgeInsets.all(width * .01),
+          //       color: colors.surface,
+          //       child: Text(
+          //         AppLocalizations.of(context)!.pettoDescription,
+          //         textAlign: TextAlign.end,
+          //         style: textStyle.bodyLarge,
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          // SizedBox(height: height * .25),
           DesktopProyectv2(
             assetImage: 'assets/images/petto-proyect.png',
             title: 'Petto',
@@ -175,7 +191,7 @@ class _Proyects extends StatelessWidget {
             skills: const ['Flutter', 'Dart', 'Firebase', 'Git', 'SOLID', 'Clean Arquitecture'],
             githubOnTap: () => launchURL('https://github.com/PettoORG/petto_app'),
           ),
-          SizedBox(height: height * .25),
+          SizedBox(height: height * .3),
           DesktopProyectv1(
             assetImage: 'assets/images/MiProceso-proyect.png',
             title: 'Mi Proceso',
@@ -204,22 +220,16 @@ class _Skills extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    TextTheme textStyle = Theme.of(context).textTheme;
-    ColorScheme colors = Theme.of(context).colorScheme;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: width * .13),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            AppLocalizations.of(context)!.skills,
-            style: textStyle.titleLarge!.copyWith(color: colors.secondary, fontFamily: 'PixelifySans'),
-          ),
-          const Divider(),
+          SharedSectionDivider(text: AppLocalizations.of(context)!.skills),
           SizedBox(height: height * .05),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
+          GridView.count(
+            crossAxisCount: 6,
+            shrinkWrap: true,
+            children: const [
               SharedLogoSkill(Brands.flutter, 'Flutter'),
               SharedLogoSkill(Brands.dart, 'Dart'),
               SharedLogoSkill(Brands.git, 'Git'),
@@ -227,6 +237,10 @@ class _Skills extends StatelessWidget {
               SharedLogoSkill(Brands.docker, 'Docker'),
               SharedLogoSkill(Brands.postgresql, 'PostgreSQL'),
             ],
+          ),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [],
           )
         ],
       ),

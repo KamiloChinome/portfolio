@@ -9,10 +9,7 @@ class Contact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    TextTheme textStyle = Theme.of(context).textTheme;
-    ColorScheme colors = Theme.of(context).colorScheme;
     DeviceScreenType deviceType = getDeviceType(MediaQuery.of(context).size);
     int axisCount = (deviceType == DeviceScreenType.desktop) ? 3 : 1;
     double aspectRatio = (deviceType == DeviceScreenType.desktop) ? 2 : 3;
@@ -22,12 +19,7 @@ class Contact extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            AppLocalizations.of(context)!.contact,
-            style: textStyle.titleLarge!.copyWith(color: colors.secondary, fontFamily: 'PixelifySans'),
-          ),
-          const Divider(),
-          SizedBox(height: height * .1),
+          SharedSectionDivider(text: AppLocalizations.of(context)!.contact),
           GridView.count(
             physics: const NeverScrollableScrollPhysics(),
             crossAxisSpacing: width * .03,

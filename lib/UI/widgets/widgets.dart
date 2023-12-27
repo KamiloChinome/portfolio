@@ -1,3 +1,5 @@
+export 'package:portfolio/UI/widgets/shared/shared_divider.dart';
+
 export 'package:portfolio/UI/widgets/contact.dart';
 
 export 'package:portfolio/UI/widgets/about_me_animated_text.dart';
