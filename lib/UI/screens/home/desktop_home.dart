@@ -22,7 +22,6 @@ class DesktopHomeScreen extends StatelessWidget {
       await Scrollable.ensureVisible(
         context,
         duration: const Duration(milliseconds: 500),
-        alignment: .5,
       );
     }
 
@@ -47,7 +46,7 @@ class DesktopHomeScreen extends StatelessWidget {
                   SizedBox(height: height * .3),
                   _Skills(key: skillsKey),
                   SizedBox(height: height * .2),
-                  _Proyects(key: workKey),
+                  _Proyects(widgetKey: workKey),
                   SizedBox(height: height * .2),
                   _Experience(key: experienceKey),
                   SizedBox(height: height * .2),
@@ -131,8 +130,9 @@ class _Experience extends StatelessWidget {
 }
 
 class _Proyects extends StatelessWidget {
-  const _Proyects({super.key});
-
+  @override
+  const _Proyects({required this.widgetKey});
+  final GlobalKey widgetKey;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -156,97 +156,50 @@ class _Proyects extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: width * .13),
       child: Column(
         children: [
-          SharedSectionDivider(text: AppLocalizations.of(context)!.projects),
-          SizedBox(height: height * .03),
-          SizedBox(
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  'Petto',
-                  style: textStyle.titleLarge,
-                ),
-                Text(
-                  AppLocalizations.of(context)!.featuredProject,
-                  style: textStyle.titleSmall!.copyWith(
-                    fontFamily: 'PixelifySans',
-                    color: colors.secondary,
-                  ),
-                ),
-                SizedBox(height: height * .01),
-                Container(
-                  width: width * .5,
-                  padding: EdgeInsets.all(width * .01),
-                  color: colors.surface,
-                  child: Text(
-                    AppLocalizations.of(context)!.pettoDescription,
-                    textAlign: TextAlign.end,
-                    style: textStyle.bodyLarge,
-                  ),
-                ),
-                SizedBox(height: height * .05),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ImageProyect(),
-                    ImageProyect(),
-                    ImageProyect(),
-                    ImageProyect(),
-                  ],
-                ),
-              ],
-            ),
+          SharedSectionDivider(
+            key: key,
+            text: AppLocalizations.of(context)!.projects,
           ),
-          SizedBox(height: height * .3),
-          DesktopProyectv2(
-            assetImage: 'assets/images/petto-proyect.png',
+          SizedBox(height: height * .03),
+          DesktopProyect(
+            assetImages: const [
+              'assets/images/petto-proyect-1.jpg',
+              'assets/images/petto-proyect-2.jpg',
+              'assets/images/petto-proyect-3.jpg',
+              'assets/images/petto-proyect-4.jpg',
+            ],
             title: 'Petto',
             description: AppLocalizations.of(context)!.pettoDescription,
             skills: const ['Flutter', 'Dart', 'Firebase', 'Git', 'SOLID', 'Clean Arquitecture'],
             githubOnTap: () => launchURL('https://github.com/PettoORG/petto_app'),
           ),
           SizedBox(height: height * .3),
-          DesktopProyectv1(
-            assetImage: 'assets/images/MiProceso-proyect.png',
+          DesktopProyect(
+            assetImages: const [
+              'assets/images/mi-proceso-1.jpg',
+              'assets/images/mi-proceso-2.jpg',
+              'assets/images/mi-proceso-3.jpg',
+              'assets/images/mi-proceso-4.jpg',
+            ],
             title: 'Mi Proceso',
             description: AppLocalizations.of(context)!.legalProcessInterface,
-            skills: const ['Flutter', 'Dart', 'Git', 'Clean Arquitecture'],
+            skills: const ['', '', 'Flutter', 'Dart', 'Git', 'Clean Arquitecture'],
             githubOnTap: () => launchURL('https://github.com/KamiloChinome/Flutter-Mi-Proceso-App'),
           ),
           SizedBox(height: height * .3),
-          DesktopProyectv2(
-            assetImage: 'assets/images/cinemapedia-proyect.png',
+          DesktopProyect(
+            assetImages: const [
+              'assets/images/cinemapedia-1.jpg',
+              'assets/images/cinemapedia-2.jpg',
+              'assets/images/cinemapedia-3.jpg',
+              'assets/images/cinemapedia-4.jpg',
+            ],
             title: 'Cinemapedia',
             description: AppLocalizations.of(context)!.movieAppDescription,
             skills: const ['Flutter', 'Dart', 'API', 'Git', 'SOLID', 'Clean Arquitecture'],
             githubOnTap: () => launchURL('https://github.com/KamiloChinome/FLutter-MovieLand-App'),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ImageProyect extends StatelessWidget {
-  const ImageProyect({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-    TextTheme textStyle = Theme.of(context).textTheme;
-    ColorScheme colors = Theme.of(context).colorScheme;
-    return RotatorFollower(
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(width * .01),
-        child: Image.asset(
-          'assets/images/petto-presentation-2.jpg',
-          fit: BoxFit.cover,
-          height: height * .6,
-        ),
       ),
     );
   }

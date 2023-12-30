@@ -39,6 +39,7 @@ class _SharedIconButtonState extends State<SharedIconButton> {
       },
       child: IconButton(
         onPressed: widget.onTap,
+        iconSize: width * .02,
         icon: Icon(
           widget.icon,
           color: color,
