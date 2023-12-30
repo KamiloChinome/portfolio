@@ -137,6 +137,8 @@ class _Proyects extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    TextTheme textStyle = Theme.of(context).textTheme;
+    ColorScheme colors = Theme.of(context).colorScheme;
     launchURL(String url) async {
       try {
         Uri uri = Uri.parse(url);
@@ -156,34 +158,47 @@ class _Proyects extends StatelessWidget {
         children: [
           SharedSectionDivider(text: AppLocalizations.of(context)!.projects),
           SizedBox(height: height * .03),
-          // Column(
-          //   crossAxisAlignment: CrossAxisAlignment.end,
-          //   children: [
-          //     Text(
-          //       'Petto',
-          //       style: textStyle.titleLarge,
-          //     ),
-          //     Text(
-          //       AppLocalizations.of(context)!.featuredProject,
-          //       style: textStyle.titleSmall!.copyWith(
-          //         fontFamily: 'PixelifySans',
-          //         color: colors.secondary,
-          //       ),
-          //     ),
-          //     SizedBox(height: height * .01),
-          //     Container(
-          //       width: width * .5,
-          //       padding: EdgeInsets.all(width * .01),
-          //       color: colors.surface,
-          //       child: Text(
-          //         AppLocalizations.of(context)!.pettoDescription,
-          //         textAlign: TextAlign.end,
-          //         style: textStyle.bodyLarge,
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // SizedBox(height: height * .25),
+          SizedBox(
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  'Petto',
+                  style: textStyle.titleLarge,
+                ),
+                Text(
+                  AppLocalizations.of(context)!.featuredProject,
+                  style: textStyle.titleSmall!.copyWith(
+                    fontFamily: 'PixelifySans',
+                    color: colors.secondary,
+                  ),
+                ),
+                SizedBox(height: height * .01),
+                Container(
+                  width: width * .5,
+                  padding: EdgeInsets.all(width * .01),
+                  color: colors.surface,
+                  child: Text(
+                    AppLocalizations.of(context)!.pettoDescription,
+                    textAlign: TextAlign.end,
+                    style: textStyle.bodyLarge,
+                  ),
+                ),
+                SizedBox(height: height * .05),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ImageProyect(),
+                    ImageProyect(),
+                    ImageProyect(),
+                    ImageProyect(),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: height * .3),
           DesktopProyectv2(
             assetImage: 'assets/images/petto-proyect.png',
             title: 'Petto',
@@ -208,6 +223,30 @@ class _Proyects extends StatelessWidget {
             githubOnTap: () => launchURL('https://github.com/KamiloChinome/FLutter-MovieLand-App'),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ImageProyect extends StatelessWidget {
+  const ImageProyect({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    TextTheme textStyle = Theme.of(context).textTheme;
+    ColorScheme colors = Theme.of(context).colorScheme;
+    return RotatorFollower(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(width * .01),
+        child: Image.asset(
+          'assets/images/petto-presentation-2.jpg',
+          fit: BoxFit.cover,
+          height: height * .6,
+        ),
       ),
     );
   }
