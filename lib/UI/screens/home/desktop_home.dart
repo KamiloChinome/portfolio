@@ -155,7 +155,7 @@ class _Proyects extends StatelessWidget {
       child: Column(
         children: [
           SharedSectionDivider(
-            key: key,
+            key: widgetKey,
             text: AppLocalizations.of(context)!.projects,
           ),
           SizedBox(height: height * .03),
