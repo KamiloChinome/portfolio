@@ -57,7 +57,7 @@ class DesktopProyect extends StatelessWidget {
           ),
           GridView.count(
             physics: const NeverScrollableScrollPhysics(),
-            crossAxisCount: 6,
+            crossAxisCount: 7,
             shrinkWrap: true,
             childAspectRatio: 1.7,
             children: List.generate(
