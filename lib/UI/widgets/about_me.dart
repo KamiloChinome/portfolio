@@ -14,7 +14,7 @@ class AboutMe extends StatelessWidget {
     ColorScheme colors = Theme.of(context).colorScheme;
     double fontSize = (deviceType == DeviceScreenType.desktop) ? 80 : 50;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: width * .13),
+      padding: EdgeInsets.symmetric(horizontal: width * .10),
       child: SizedBox(
         width: double.infinity,
         child: Column(

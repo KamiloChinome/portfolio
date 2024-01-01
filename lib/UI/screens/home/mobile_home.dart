@@ -17,6 +17,7 @@ class MobileHomeScreen extends StatelessWidget {
     final experienceKey = GlobalKey();
     final contactKey = GlobalKey();
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
 
     Future scrollToSection(GlobalKey key) async {
       final sectionCContext = key.currentContext!;
@@ -67,35 +68,64 @@ class MobileHomeScreen extends StatelessWidget {
         ],
       ),
       endDrawer: Drawer(
+        elevation: 10,
+        width: width * .6,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SharedTextButton(
               text: AppLocalizations.of(context)!.about,
               onPressed: () => scrollToSection(aboutKey),
             ),
+            SizedBox(height: height * .01),
             SharedTextButton(
               text: AppLocalizations.of(context)!.skills,
               onPressed: () => scrollToSection(skillsKey),
             ),
+            SizedBox(height: height * .01),
             SharedTextButton(
-              text: AppLocalizations.of(context)!.work,
+              text: AppLocalizations.of(context)!.projects,
               onPressed: () => scrollToSection(proyectsKey),
             ),
+            SizedBox(height: height * .01),
             SharedTextButton(
               text: AppLocalizations.of(context)!.experience,
               onPressed: () => scrollToSection(experienceKey),
             ),
+            SizedBox(height: height * .01),
             SharedTextButton(
               text: AppLocalizations.of(context)!.contact,
               onPressed: () => scrollToSection(contactKey),
             ),
+            SizedBox(height: height * .01),
             SharedOutlinedButton(
               text: AppLocalizations.of(context)!.resume,
               onPressed: () => launchURL(
                 'https://firebasestorage.googleapis.com/v0/b/kamilo-chinome.appspot.com/o/CV%20KAMILO%20CHINOME.pdf?alt=media&token=00998005-244c-4fec-b761-aa863bad4dee',
               ),
             ),
+            SizedBox(height: height * .03),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SharedIconButton(
+                    icon: IonIcons.logo_linkedin,
+                    onTap: () {
+                      launchURL('https://www.linkedin.com/in/kamilochinome');
+                    }),
+                SharedIconButton(
+                    icon: IonIcons.logo_github,
+                    onTap: () {
+                      launchURL('https://github.com/KamiloChinome');
+                    }),
+                SharedIconButton(
+                  icon: IonIcons.logo_instagram,
+                  onTap: () {
+                    launchURL('https://www.instagram.com/kmilo_chinome');
+                  },
+                ),
+              ],
+            )
           ],
         ),
       ),
@@ -180,21 +210,13 @@ class _Experience extends StatelessWidget {
         ],
       ),
     ];
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    TextTheme textStyle = Theme.of(context).textTheme;
-    ColorScheme colors = Theme.of(context).colorScheme;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: width * .13),
+      padding: EdgeInsets.symmetric(horizontal: width * .10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            AppLocalizations.of(context)!.workExperience,
-            style: textStyle.titleLarge!.copyWith(color: colors.secondary, fontFamily: 'PixelifySans'),
-          ),
-          const Divider(),
-          SizedBox(height: height * .1),
+          SharedSectionDivider(text: AppLocalizations.of(context)!.workExperience),
           ...List.generate(jobs.length, (index) => _Job(jobs[index]))
         ],
       ),
@@ -294,42 +316,53 @@ class _Proyects extends StatelessWidget {
       }
     }
 
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: width * .13),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            AppLocalizations.of(context)!.projects,
-            style: textStyle.titleLarge!.copyWith(color: colors.secondary, fontFamily: 'PixelifySans'),
-          ),
-          const Divider(),
-          SizedBox(height: height * .1),
-          MobileProyectv1(
-            assetImage: 'assets/images/petto-proyect.png',
-            title: 'Petto',
-            description: AppLocalizations.of(context)!.pettoDescription,
-            skills: const ['Flutter', 'Dart', 'Firebase', 'Git', 'SOLID', 'Clean Arquitecture'],
-            githubOnTap: () => launchURL('https://github.com/PettoORG/petto_app'),
-          ),
-          SizedBox(height: height * .1),
-          MobileProyectv2(
-            assetImage: 'assets/images/MiProceso-proyect.png',
-            title: 'Mi Proceso',
-            description: AppLocalizations.of(context)!.legalProcessInterface,
-            skills: const ['Flutter', 'Dart', 'Git', 'Clean Arquitecture'],
-            githubOnTap: () => launchURL('https://github.com/KamiloChinome/Flutter-Mi-Proceso-App'),
-          ),
-          SizedBox(height: height * .1),
-          MobileProyectv1(
-            assetImage: 'assets/images/cinemapedia-proyect.png',
-            title: 'Cinemapedia',
-            description: AppLocalizations.of(context)!.movieAppDescription,
-            skills: const ['Flutter', 'Dart', 'API', 'Git', 'SOLID', 'Clean Arquitecture'],
-            githubOnTap: () => launchURL('https://github.com/KamiloChinome/FLutter-MovieLand-App'),
-          ),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: width * .10),
+          child: SharedSectionDivider(text: AppLocalizations.of(context)!.projects),
+        ),
+        SizedBox(height: height * .05),
+        MobileProyect(
+          assetImages: const [
+            'assets/images/petto-proyect-1.jpg',
+            'assets/images/petto-proyect-2.jpg',
+            'assets/images/petto-proyect-3.jpg',
+            'assets/images/petto-proyect-4.jpg',
+          ],
+          title: 'Petto',
+          description: AppLocalizations.of(context)!.pettoDescription,
+          skills: const ['Flutter', 'Dart', 'Firebase', 'Git', 'SOLID', 'Clean Arquitecture'],
+          githubOnTap: () => launchURL('https://github.com/PettoORG/petto_app'),
+        ),
+        SizedBox(height: height * .05),
+        MobileProyect(
+          assetImages: const [
+            'assets/images/mi-proceso-1.jpg',
+            'assets/images/mi-proceso-2.jpg',
+            'assets/images/mi-proceso-3.jpg',
+            'assets/images/mi-proceso-4.jpg',
+          ],
+          title: 'Mi Proceso',
+          description: AppLocalizations.of(context)!.legalProcessInterface,
+          skills: const ['Flutter', 'Dart', 'Git', 'Clean Arquitecture'],
+          githubOnTap: () => launchURL('https://github.com/KamiloChinome/Flutter-Mi-Proceso-App'),
+        ),
+        SizedBox(height: height * .05),
+        MobileProyect(
+          assetImages: const [
+            'assets/images/cinemapedia-1.jpg',
+            'assets/images/cinemapedia-2.jpg',
+            'assets/images/cinemapedia-3.jpg',
+            'assets/images/cinemapedia-4.jpg',
+          ],
+          title: 'Cinemapedia',
+          description: AppLocalizations.of(context)!.movieAppDescription,
+          skills: const ['Flutter', 'Dart', 'API', 'Git', 'SOLID', 'Clean Arquitecture'],
+          githubOnTap: () => launchURL('https://github.com/KamiloChinome/FLutter-MovieLand-App'),
+        ),
+      ],
     );
   }
 }
@@ -341,18 +374,12 @@ class _Skills extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    TextTheme textStyle = Theme.of(context).textTheme;
-    ColorScheme colors = Theme.of(context).colorScheme;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: width * .13),
+      padding: EdgeInsets.symmetric(horizontal: width * .10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            AppLocalizations.of(context)!.skills,
-            style: textStyle.titleLarge!.copyWith(color: colors.secondary, fontFamily: 'PixelifySans'),
-          ),
-          const Divider(),
+          SharedSectionDivider(text: AppLocalizations.of(context)!.skills),
           SizedBox(height: height * .03),
           GridView.count(
             physics: const NeverScrollableScrollPhysics(),

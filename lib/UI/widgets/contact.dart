@@ -15,7 +15,7 @@ class Contact extends StatelessWidget {
     double aspectRatio = (deviceType == DeviceScreenType.desktop) ? 2 : 3;
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: width * .13),
+      padding: EdgeInsets.symmetric(horizontal: width * .10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

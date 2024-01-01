@@ -1,4 +1,4 @@
-export 'package:portfolio/UI/widgets/shared/shared_image_proyect.dart';
+export 'package:portfolio/UI/widgets/image_proyect.dart';
 
 export 'package:portfolio/UI/widgets/animations/rotation_folower_animation.dart';
 

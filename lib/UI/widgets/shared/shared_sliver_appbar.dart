@@ -11,9 +11,10 @@ class SharedSliverAppBar extends StatelessWidget {
     DeviceScreenType deviceType = getDeviceType(MediaQuery.of(context).size);
     double width = MediaQuery.of(context).size.width;
     return SliverAppBar(
-      toolbarHeight: 100,
+      toolbarHeight: (deviceType == DeviceScreenType.desktop) ? 100 : 65,
       leadingWidth: (deviceType == DeviceScreenType.desktop) ? width * .1 : width * .16,
-      floating: true,
+      floating: false,
+      pinned: true,
       leading: leading,
       actions: actions,
     );
