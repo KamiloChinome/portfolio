@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:portfolio/UI/providers/language_provider.dart';
 import 'package:portfolio/UI/widgets/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:portfolio/models/job_model.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DesktopHomeScreen extends StatelessWidget {
@@ -314,8 +316,12 @@ class _SliverAppBar extends StatelessWidget {
         SizedBox(width: width * .01),
         SharedOutlinedButton(
           text: AppLocalizations.of(context)!.resume,
-          onPressed: () => launchURL(
-              'https://firebasestorage.googleapis.com/v0/b/kamilo-chinome.appspot.com/o/CV%20KAMILO%20CHINOME.pdf?alt=media&token=00998005-244c-4fec-b761-aa863bad4dee'),
+          onPressed: () {
+            String url = (context.read<LanguageProvider>().language == 'es')
+                ? 'https://firebasestorage.googleapis.com/v0/b/kamilo-chinome.appspot.com/o/CV%20KAMILO%20CHINOME.pdf?alt=media&token=00998005-244c-4fec-b761-aa863bad4dee'
+                : 'https://firebasestorage.googleapis.com/v0/b/kamilo-chinome.appspot.com/o/CV%20KAMILO%20CHINOME%20EN.pdf?alt=media&token=6bb5992d-25f5-4955-ae54-10b53fc09a8a';
+            launchURL(url);
+          },
         ),
         SizedBox(width: width * .03),
       ],
