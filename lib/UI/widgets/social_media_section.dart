@@ -40,13 +40,13 @@ class SocialMediaSection extends StatelessWidget {
               onTap: () {
                 launchURL('https://github.com/KamiloChinome');
               }),
-          SizedBox(height: height * .01),
-          SharedIconButton(
-              icon: IonIcons.logo_instagram,
-              onTap: () {
-                launchURL('https://www.instagram.com/kmilo_chinome');
-              }),
           SizedBox(height: height * .03),
+          // SharedIconButton(
+          //     icon: IonIcons.logo_instagram,
+          //     onTap: () {
+          //       launchURL('https://www.instagram.com/kmilo_chinome');
+          //     }),
+          // SizedBox(height: height * .03),
         ].animate().slideY(duration: const Duration(milliseconds: 600)).fadeIn(),
       ),
     );

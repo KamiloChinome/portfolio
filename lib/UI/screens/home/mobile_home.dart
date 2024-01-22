@@ -118,12 +118,12 @@ class MobileHomeScreen extends StatelessWidget {
                     onTap: () {
                       launchURL('https://github.com/KamiloChinome');
                     }),
-                SharedIconButton(
-                  icon: IonIcons.logo_instagram,
-                  onTap: () {
-                    launchURL('https://www.instagram.com/kmilo_chinome');
-                  },
-                ),
+                // SharedIconButton(
+                //   icon: IonIcons.logo_instagram,
+                //   onTap: () {
+                //     launchURL('https://www.instagram.com/kmilo_chinome');
+                //   },
+                // ),
               ],
             )
           ],
