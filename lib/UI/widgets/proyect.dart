@@ -11,6 +11,7 @@ class DesktopProyect extends StatelessWidget {
     required this.description,
     required this.skills,
     this.githubOnTap,
+    this.playStoreOnTap,
     this.linkOnTap,
   });
 
@@ -20,6 +21,7 @@ class DesktopProyect extends StatelessWidget {
   final List<String> skills;
   final Function()? githubOnTap;
   final Function()? linkOnTap;
+  final Function()? playStoreOnTap;
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +78,9 @@ class DesktopProyect extends StatelessWidget {
                   (linkOnTap != null)
                       ? SharedIconButton(icon: BoxIcons.bx_link_external, onTap: linkOnTap)
                       : Container(),
+                  (playStoreOnTap != null)
+                      ? SharedIconButton(icon: BoxIcons.bxl_play_store, onTap: playStoreOnTap)
+                      : Container(),
                 ],
               ),
               ...List.generate(
@@ -97,6 +102,7 @@ class MobileProyect extends StatelessWidget {
   final List<String> skills;
   final Function()? githubOnTap;
   final Function()? linkOnTap;
+  final Function()? playStoreOnTap;
   const MobileProyect(
       {super.key,
       required this.assetImages,
@@ -104,6 +110,7 @@ class MobileProyect extends StatelessWidget {
       required this.description,
       required this.skills,
       this.githubOnTap,
+      this.playStoreOnTap,
       this.linkOnTap});
 
   @override
@@ -142,6 +149,9 @@ class MobileProyect extends StatelessWidget {
                   SharedIconButton(icon: BoxIcons.bxl_github, onTap: githubOnTap),
                   (linkOnTap != null)
                       ? SharedIconButton(icon: BoxIcons.bx_link_external, onTap: linkOnTap)
+                      : Container(),
+                  (playStoreOnTap != null)
+                      ? SharedIconButton(icon: BoxIcons.bxl_play_store, onTap: playStoreOnTap)
                       : Container(),
                 ],
               ),

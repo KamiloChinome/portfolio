@@ -172,6 +172,7 @@ class _Proyects extends StatelessWidget {
             description: AppLocalizations.of(context)!.pettoDescription,
             skills: const ['', 'Flutter', 'Dart', 'Firebase', 'Git', 'SOLID', 'Clean Arquitecture'],
             githubOnTap: () => launchURL('https://github.com/PettoORG/petto_app'),
+            playStoreOnTap: () => launchURL('https://play.google.com/store/apps/details?id=com.petto.app'),
           ),
           SizedBox(height: height * .3),
           DesktopProyect(
