@@ -119,16 +119,11 @@ class MobileHomeScreen extends StatelessWidget {
                       launchURL('https://www.linkedin.com/in/kamilochinome');
                     }),
                 SharedIconButton(
-                    icon: IonIcons.logo_github,
-                    onTap: () {
-                      launchURL('https://github.com/KamiloChinome');
-                    }),
-                // SharedIconButton(
-                //   icon: IonIcons.logo_instagram,
-                //   onTap: () {
-                //     launchURL('https://www.instagram.com/kmilo_chinome');
-                //   },
-                // ),
+                  icon: IonIcons.logo_github,
+                  onTap: () {
+                    launchURL('https://github.com/KamiloChinome');
+                  },
+                ),
               ],
             )
           ],
@@ -168,11 +163,6 @@ class _SocialMedia extends StatelessWidget {
             icon: IonIcons.logo_github,
             onTap: () {
               launchURL('https://github.com/KamiloChinome');
-            }),
-        SharedIconButton(
-            icon: IonIcons.logo_instagram,
-            onTap: () {
-              launchURL('https://www.instagram.com/kmilo_chinome');
             }),
       ],
     );
