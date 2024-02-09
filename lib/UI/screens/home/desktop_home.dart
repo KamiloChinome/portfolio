@@ -319,8 +319,8 @@ class _SliverAppBar extends StatelessWidget {
           text: AppLocalizations.of(context)!.resume,
           onPressed: () {
             String url = (context.read<LanguageProvider>().language == 'es')
-                ? 'https://firebasestorage.googleapis.com/v0/b/kamilo-chinome.appspot.com/o/CV%20KAMILO%20CHINOME.pdf?alt=media&token=00998005-244c-4fec-b761-aa863bad4dee'
-                : 'https://firebasestorage.googleapis.com/v0/b/kamilo-chinome.appspot.com/o/CV%20KAMILO%20CHINOME%20EN.pdf?alt=media&token=6bb5992d-25f5-4955-ae54-10b53fc09a8a';
+                ? 'https://firebasestorage.googleapis.com/v0/b/kamilo-chinome.appspot.com/o/CV%20KAMILO%20CHINOME%20ES.pdf?alt=media&token=92b1cbdb-bbad-48e3-a5ca-0d09506ff0f2'
+                : 'https://firebasestorage.googleapis.com/v0/b/kamilo-chinome.appspot.com/o/CV%20KAMILO%20CHINOME%20EN.pdf?alt=media&token=ac92a840-31d7-49d9-99b4-a9ad0bb65832';
             launchURL(url);
           },
         ),

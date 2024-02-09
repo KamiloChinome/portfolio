@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:portfolio/UI/providers/language_provider.dart';
 import 'package:portfolio/UI/widgets/widgets.dart';
 import 'package:portfolio/models/job_model.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MobileHomeScreen extends StatelessWidget {
@@ -100,9 +102,12 @@ class MobileHomeScreen extends StatelessWidget {
             SizedBox(height: height * .01),
             SharedOutlinedButton(
               text: AppLocalizations.of(context)!.resume,
-              onPressed: () => launchURL(
-                'https://firebasestorage.googleapis.com/v0/b/kamilo-chinome.appspot.com/o/CV%20KAMILO%20CHINOME.pdf?alt=media&token=00998005-244c-4fec-b761-aa863bad4dee',
-              ),
+              onPressed: () {
+                String url = (context.read<LanguageProvider>().language == 'es')
+                    ? 'https://firebasestorage.googleapis.com/v0/b/kamilo-chinome.appspot.com/o/CV%20KAMILO%20CHINOME%20ES.pdf?alt=media&token=92b1cbdb-bbad-48e3-a5ca-0d09506ff0f2'
+                    : 'https://firebasestorage.googleapis.com/v0/b/kamilo-chinome.appspot.com/o/CV%20KAMILO%20CHINOME%20EN.pdf?alt=media&token=ac92a840-31d7-49d9-99b4-a9ad0bb65832';
+                launchURL(url);
+              },
             ),
             SizedBox(height: height * .03),
             Row(
