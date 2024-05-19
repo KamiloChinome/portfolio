@@ -74,8 +74,8 @@ class _Experience extends StatelessWidget {
     List<Job> jobs = [
       Job(
         jobTitle: AppLocalizations.of(context)!.flutterDeveloper,
-        companyName: 'Santo Mining Corp',
-        period: 'DEC 2023 - ACTUALMENTE',
+        companyName: 'OmniTech Software SAS',
+        period: 'NOV 2023 - ACTUALMENTE',
         contributions: [
           AppLocalizations.of(context)!.requirementsIdentification,
           AppLocalizations.of(context)!.comprehensiveMobileApps,
